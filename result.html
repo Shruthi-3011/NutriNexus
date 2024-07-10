@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ac42c3b1f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+.detailed-view-bg-container {
+  background-image: url("bg.png");
+  height: 200vh;
+  background-size: cover;
+}
+.detailed-view-heading {
+  color:#0f0e46;
+  font-family: "Roboto";
+  font-size: 30px;
+  font-weight: bold;
+  padding: 24px;
+}
+.detailed-view-para {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: bold;
+  padding: 24px;
+}
+.detailed-view-card-container {
+  background-color: white;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  margin: 24px;}
+.detailed-view-card-heading {
+  color: #0f0e46;
+  font-family: "Roboto";
+  font-size: 25px;
+  font-weight: bold;
+  margin-left:15px;
+}
+.detailed-view-card-description {
+  color: #6c6b70;
+  font-family: "Roboto";
+  font-size:20px;
+  margin-left:15px;
+}
+.detailed-view-card-text-container {
+  padding: 16px;
+}
+.carousel-image{
+    height:500px;
+    width:500px;
+    background-size: cover;
+    margin-left:300px;
+    margin-right:300px;
+}
+.custom-btn{
+    color: white;
+    background-image: linear-gradient(#d0b200, #a58d00);
+    width: 130px;
+    height: 45px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+.food-munch-logo {
+    width: 90px;
+    height: 80px;
+}
+
+#navItem1 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem2 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem3 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+.explore-menu-section {
+  background-image: url("https://img.freepik.com/free-vector/fruit-vegetables-background_23-2148485148.jpg?w=1800&t=st=1714922139~exp=1714922739~hmac=56c789d7182c368a3c02b55fc017fdaff2a110c375fda33d0b30473e6041b86a");
+}
+.menu-section-heading {
+  color: black;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-weight: 700;
+  margin-top:100px;
+}
+.menu-item-image {
+  border-radius: 16px;
+  height:200px;
+}
+.menu-card-title {
+  color: #323f4b;
+  font-family: "Roboto";
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 24px;
+}
+.menu-item-link {
+  color: #d0b200;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
+}
+.menu-item-card {
+  border-radius: 16px;
+  height:450px;
+  width:300px;
+  margin:10px;
+  background-color: white;
+}
+.card-container{
+    display: flex;
+    justify-content: space-between;
+}
+.menu-section-para{
+  color: black;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: 700;
+  margin-top:100px;
+  text-align: center;
+  margin-top:40px;
+}
+.menu-heading {
+  color: black;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-weight: 700;
+  margin-top:100px;
+}
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://img.hotimg.com/logo-transparent-png.png" class="food-munch-logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+            </div>
+        </div>
+    </div>
+</nav>
+{% if prediction == 1 %}
+{%if age_group=="1 to 10"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are diabetic.</mark></h1>
+          <p class="menu-section-para" style="color:black">Follow the below reciepes for improving your health</p>
+          <h1 class="menu-section-heading">Explore the reciepe</h1>
+        </div>
+        <div class="card-container">
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="shadow menu-item-card p-3 mb-3">
+            <img
+              src="https://miro.medium.com/v2/resize:fit:1018/format:webp/0*TqMVxVADYX8Ps4nP"
+              class="menu-item-image w-100"
+            />
+            <h1 class="menu-card-title">Breakfast</h1>
+            <h1 class="menu-card-title">Hot Cereal and Milk</h1>
+            <a href="/breakfastonetoten" class="menu-item-link">
+              View Reciepe
+              <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="shadow menu-item-card p-3 mb-3">
+            <img
+              src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1456,h_1092/k%2FPhoto%2FRecipes%2F2022-03_cucumber-sandwiches%2F2022-03-08_ATK-6468"
+              class="menu-item-image w-100"
+            />
+            <h1 class="menu-card-title">Lunch</h1>
+            <h1 class="menu-card-title">Cucumber Sandwich</h1>
+            <a href="/lunchonetoten" class="menu-item-link">
+              View Reciepe
+              <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="menu-item-card shadow p-3 mb-3">
+            <img
+              src="https://media.vogue.in/wp-content/uploads/2020/10/Besan-cheela-1920x1080.jpg"
+              class="menu-item-image w-100"
+            />
+            <h1 class="menu-card-title">Dinner</h1>
+            <h1 class="menu-card-title">Besan Cheela</h1>
+            <a href="/dinneronetoten" class="menu-item-link">
+              View Reciepe
+              <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+{%elif age_group == "11 to 30"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are diabetic.</mark></h1>
+        <p class="menu-section-para">Follow the below reciepes for improving your health</p>
+        <h1 class="menu-section-heading">Explore the reciepe</h1>
+      </div>
+      <div class="card-container">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.cookwithmanali.com/wp-content/uploads/2014/08/Poha-Recipe-1014x1536.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Breakfast</h1>
+          <h1 class="menu-card-title">Poha</h1>
+          <a href="/breakfasttothirty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://blog.pureindianfoods.com/wp-content/uploads/2019/05/palak-paneer.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Lunch</h1>
+          <h1 class="menu-card-title">Roti with Palak Paneer</h1>
+          <a href="/lunchtothirty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="menu-item-card shadow p-3 mb-3">
+          <img
+            src="https://www.cookwithmanali.com/wp-content/uploads/2019/03/Rice-and-Dal-Instant-Pot.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Dinner</h1>
+          <h1 class="menu-card-title">Rice and Dal</h1>
+          <a href="/dinnertothirty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{%elif age_group == "31 to 60"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are diabetic.</mark></h1>
+        <p class="menu-section-para">Follow the below reciepes for improving your health</p>
+        <h1 class="menu-section-heading">Explore the reciepe</h1>
+      </div>
+      <div class="card-container">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa-1014x1536.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Breakfast</h1>
+          <h1 class="menu-card-title">Dosa with chutney and sambar</h1>
+          <a href="/breakfasttosixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.theendlessmeal.com/wp-content/uploads/2021/06/Paneer-Butter-Masala-2-330x330.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Lunch</h1>
+          <h1 class="menu-card-title">Pulao with paneer masala</h1>
+          <a href="/lunchtosixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="menu-item-card shadow p-3 mb-3">
+          <img
+            src="https://www.archanaskitchen.com/images/archanaskitchen/1-Author/Hina_Gujral/Bajri_Ki_Roti_Recipe.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Dinner</h1>
+          <h1 class="menu-card-title">Millet Roti with Dal</h1>
+          <a href="/dinnertosixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{%elif age_group == "Above 60"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are diabetic.</mark></h1>
+        <p class="menu-section-para">Follow the below reciepes for improving your health</p>
+        <h1 class="menu-section-heading">Explore the reciepe</h1>
+      </div>
+      <div class="card-container">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://geekrobocook.com/wp-content/uploads/2021/03/30_Idly.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Breakfast</h1>
+          <h1 class="menu-card-title">Idly,Chutney and Sambar</h1>
+          <a href="/breakfastabovesixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/9/92/Close-up_Lamb_Curry%2C_Chilli_Chicken%2C_Mixed_Vegetable_Curry%2C_1-roti_%2B_half-rice_-_Zam_Zam_AUD8.50_%283295111398%29.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Lunch</h1>
+          <h1 class="menu-card-title">Roti with mixed veg curry</h1>
+          <a href="/lunchabovesixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="menu-item-card shadow p-3 mb-3">
+          <img
+            src="https://www.indianveggiedelight.com/wp-content/uploads/2022/10/ven-pongal.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Dinner</h1>
+          <h1 class="menu-card-title">Pongal with Coconut Chutney</h1>
+          <a href="/dinnerabovesixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+{% elif prediction == 0 %}
+{%if age_group=="1 to 10"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are not diabetic.</mark></h1>
+          <p class="menu-section-para">You can look at the below reciepes</p>
+          <h1 class="menu-section-heading">Explore the reciepe</h1>
+        </div>
+        <div class="card-container">
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="shadow menu-item-card p-3 mb-3">
+            <img
+              src="https://c.ndtvimg.com/2023-05/mvbii9hg_amaranth-tikki_625x300_09_May_23.jpg"
+              class="menu-item-image w-100"
+            />
+            <h1 class="menu-card-title">Breakfast</h1>
+            <h1 class="menu-card-title">Oats moong dal tikki</h1>
+            <a href="/ndbreakfastonetoten" class="menu-item-link">
+              View Reciepe
+              <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="shadow menu-item-card p-3 mb-3">
+            <img
+              src="https://media.self.com/photos/594abf4d6288135556fc01b9/master/w_2240,c_limit/0417-dinner-vegetable-fried-rice.jpg"
+              class="menu-item-image w-100"
+            />
+            <h1 class="menu-card-title">Lunch</h1>
+            <h1 class="menu-card-title">Spinach and carrot rice</h1>
+            <a href="/ndlunchonetoten" class="menu-item-link">
+              View Reciepe
+              <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="menu-item-card shadow p-3 mb-3">
+            <img
+              src="https://ranveerbrar.com/wp-content/uploads/2021/02/oats-uttappam.png"
+              class="menu-item-image w-100"
+            />
+            <h1 class="menu-card-title">Dinner</h1>
+            <h1 class="menu-card-title">Oats Uttapam</h1>
+            <a href="/nddinneronetoten" class="menu-item-link">
+              View Reciepe
+              <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+    </div>
+      </div>
+    </div>
+</div>
+{%elif age_group == "11 to 30"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are not diabetic.</mark></h1>
+        <p class="menu-section-para">You can look at the below reciepes</p>
+        <h1 class="menu-section-heading">Explore the reciepe</h1>
+      </div>
+      <div class="card-container">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://c.ndtvimg.com/2023-07/ue6m8al_masala-toast_625x300_30_July_23.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Breakfast</h1>
+          <h1 class="menu-card-title">Veg paneer toast</h1>
+          <a href="/ndbreakfasttothirty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.relishthebite.com/wp-content/uploads/2019/08/Bhindi_Salan_Okra_Peanutcurry-2.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Lunch</h1>
+          <h1 class="menu-card-title">Roti and Bhindi Curry</h1>
+          <a href="/ndlunchtothirty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="menu-item-card shadow p-3 mb-3">
+          <img
+            src="https://www.rainbownourishments.com/wp-content/uploads/2021/06/vegan-moroccan-vegetable-tray-1.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Dinner</h1>
+          <h1 class="menu-card-title">Baked Vegetable Platter</h1>
+          <a href="/nddinnertothirty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+  </div>
+    </div>
+  </div>
+</div>
+{%elif age_group == "31 to 60"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are not diabetic.</mark></h1>
+        <p class="menu-section-para">Follow the below reciepes for improving your health</p>
+        <h1 class="menu-section-heading">Explore the reciepe</h1>
+      </div>
+      <div class="card-container">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.hummusapien.com/wp-content/uploads/2020/05/Avocado-Chickpea-Salad-6-1.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Breakfast</h1>
+          <h1 class="menu-card-title">Chickpea  salad sandwich</h1>
+          <a href="/ndbreakfasttosixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.paleorunningmomma.com/wp-content/uploads/2017/04/zucchini-pasta-with-chicken-5.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Lunch</h1>
+          <h1 class="menu-card-title">Zucchini Pasta with Sun-Dried Tomatoes</h1>
+          <a href="/ndlunchtosixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="menu-item-card shadow p-3 mb-3">
+          <img
+            src="https://www.spiceupthecurry.com/wp-content/uploads/2021/03/rajma-recipe-1-1.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Dinner</h1>
+          <h1 class="menu-card-title">Rajma Chaawal</h1>
+          <a href="/nddinnertosixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{%elif age_group == "Above 60"%}
+<div class="explore-menu-section pt-5 pb-5" id="exploreMenuSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="menu-heading" style="text-align: center;"><mark>Prediction:You are not diabetic.</mark></h1>
+        <p class="menu-section-para">Follow the below reciepes for improving your health</p>
+        <h1 class="menu-section-heading">Explore the reciepe</h1>
+      </div>
+      <div class="card-container">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.archanaskitchen.com/images/archanaskitchen/1-Author/Pooja_Thakur/Ajwain_Besan_Ka_Paratha_Masala_Paratha.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Breakfast</h1>
+          <h1 class="menu-card-title">Besan Paratha</h1>
+          <a href="/ndbreakfastabovesixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img
+            src="https://www.spiceupthecurry.com/wp-content/uploads/2021/06/aloo-gobi-3.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Lunch</h1>
+          <h1 class="menu-card-title">Aloo Gobi and Roti</h1>
+          <a href="/ndlunchabovesixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="menu-item-card shadow p-3 mb-3">
+          <img
+            src="https://www.myhealthybreakfast.in/images/snacks/2020/newimage-snacks/ragi-upma.jpg"
+            class="menu-item-image w-100"
+          />
+          <h1 class="menu-card-title">Dinner</h1>
+          <h1 class="menu-card-title">Ragi Upma</h1>
+          <a href="/nddinnerabovesixty" class="menu-item-link">
+            View Reciepe
+            <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="#d0b200" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+{% endif %}
+</div>
+  </body>
+  </html>
+

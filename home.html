@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NutriNexus</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ac42c3b1f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        .food-munch-logo {
+    width: 90px;
+    height: 80px;
+}
+
+#navItem1 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem2 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem3 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+
+.banner-section-bg-container {
+    background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/foodmunch-banner-bg.png");
+    height: 100vh;
+    background-size: cover;
+}
+
+.banner-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 45px;
+    font-weight: 300;
+}
+
+.banner-caption {
+    color: #f5f7fa;
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.custom-button {
+    color: white;
+    background-image: linear-gradient(#d0b200, #a58d00);
+    width: 130px;
+    height: 45px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.custom-outline-button {
+    color: #d0b200;
+    background-color: transparent;
+    width: 130px;
+    height: 70px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d0b200;
+    border-radius: 8px;
+}
+.wcu-section {
+  background-color: #f9fbfe;
+}
+.wcu-section-heading {
+  color: #183b56;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-weight: 700;
+}
+.wcu-section-description {
+  color: #5a7184;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+.wcu-card {
+  text-align: center;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e5eaf4;
+  border-radius: 16px;
+}
+.wcu-card-image {
+  width: 87px;
+  height: 90px;
+}
+.wcu-card-title {
+  color: #323f4b;
+  font-family: "Roboto";
+  font-size: 22px;
+  font-weight: 500;
+}
+.wcu-card-description {
+  color: #7b8794;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+.feedback-title {
+  color: #323f4b;
+  font-family: "Roboto";
+  font-size: 30px;
+  font-weight: bold;
+}
+.feedback-description {
+  color: #7b8794;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+.feedbackBodyContainer{
+    background-color: rgb(255, 255, 255, 0.5);
+    width: 50vw;
+    margin:10px;
+    margin-left:250px;
+    border-style:solid;
+    border-radius: 10px;
+    border-width:1px;
+    overflow-y: scroll;
+}
+.feedbackContainer {
+  background-color: #f9fbfe;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.feedbackLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-family:"BreeSerif";
+  font-size:25px;
+  font-weight:500;
+  margin:10px;
+}
+
+
+textarea {
+  resize: vertical;
+}
+
+.feedbackButton {
+    color: white;
+    background-image: linear-gradient(#d0b200, #a58d00);
+    width: 130px;
+    height: 45px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.inputStyle{
+    width:400px;
+    margin:10px;
+}
+.follow-us-section {
+  background-color: white;
+}
+.follow-us-section-heading {
+  text-align: center;
+  color: #183b56;
+  font-family: "Roboto";
+  font-size: 28px;
+  font-weight: 700;
+}
+.follow-us-icon-container {
+  background-color: #faf7e8;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  margin: 15px;
+  padding-top: 22px;
+  padding-bottom: 14px;
+  padding-right: 16px;
+  padding-left: 22px;
+}
+.icon {
+  color: #d0b200;
+  font-size: 35px;
+}.footer-section {
+  background-color: #0d2436;
+}
+.footer-section-mail-id {
+  color: #959ead;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.footer-section-address {
+  color: #959ead;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+    </style>
+    <script type="text/javascript" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://img.hotimg.com/logo-transparent-png.png" class="food-munch-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link active" id="navItem1" href="#wcuSection">
+                        Why Choose Us?
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <a class="nav-link" href="#feedbackSection" id="navItem2">Feedback</a>
+                    <a class="nav-link" href="#followUsSection" id="navItem3">Follow Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="banner-section-bg-container d-flex justify-content-center flex-column" id="SectionHome">
+        <div class="text-center">
+            <h1 class="banner-heading mb-3">Get Delicious Food Anytime</h1>
+            <p class="banner-caption mb-4">Eat Smart & Healthy</p>
+            <!--<a href="login.html" class="btn custom-button" >Login</a>-->
+            <a href="/signin" class="btn custom-button" >Sign In</a>
+        </div>
+    </div>
+    <div class="wcu-section pt-5 pb-5" id="wcuSection">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="wcu-section-heading">Why Choose Us?</h1>
+              <p class="wcu-section-description">
+                We use both original recipes and classic versions of famous food
+                items.
+              </p>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="wcu-card p-3 mb-3">
+                <img
+                  src="https://teamnutrition.ca/sites/default/files/inline-images/Meal%20Plans%20-%20Plans%20alimentaires_0.jpg"
+                  class="wcu-card-image"
+                />
+                <h1 class="wcu-card-title mt-3">Customized Meal Plans</h1>
+                <p class="wcu-card-description">
+                    Personalized meal plans tailored to individual dietary preferences, health goals, and lifestyle needs.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="wcu-card p-3 mb-3">
+                <img
+                  src="https://www.alimentarium.org/sites/default/files/media/image/2017-04/EMAG_balanced_meal_shutterstock_54369673_TOP_0_0.jpg"
+                  class="wcu-card-image"
+                />
+                <h1 class="wcu-card-title mt-3">Nutritionally Balanced Recipes</h1>
+                <p class="wcu-card-description">
+                    A wide variety of nutritionally balanced recipes designed by dietitians and nutrition experts to promote health and well-being.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="wcu-card p-3 mb-3">
+                <img
+                  src="https://hr.umich.edu/sites/default/files/glucose-heart.jpg"
+                  class="wcu-card-image"
+                />
+                <h1 class="wcu-card-title mt-3">Educational Resources</h1>
+                <p class="wcu-card-description">
+                    Access to educational resources, cooking tips, and nutritional information to help users make informed decisions about their food choices and promote healthy eating habits.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="wcu-card p-3 mb-3">
+                  <img
+                    src="https://www.peerbits.com/static/062382164e1611fb9210f33944d86c39/189bc/on-demand-diet-and-nutrition-app-main.jpg"
+                    class="wcu-card-image"
+                  />
+                  <h1 class="wcu-card-title mt-3">Mobile Accessibility</h1>
+                  <p class="wcu-card-description">
+                    Access the meal planner application anytime, anywhere, with mobile-friendly features and cross-platform compatibility for seamless user experience on desktop, tablet, and smartphone devices.
+                  </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="wcu-card p-3 mb-3">
+                  <img
+                    src="https://media.licdn.com/dms/image/D4E12AQFgBcV61n4Khw/article-cover_image-shrink_720_1280/0/1707930118557?e=1720051200&v=beta&t=TomemNWgUTu8ef_z79DVzQLZxldlgaHldW9zyVhTuVI"
+                    class="wcu-card-image"
+                  />
+                  <h1 class="wcu-card-title mt-3">Flexible Planning Options</h1>
+                  <p class="wcu-card-description">
+                    Flexible meal planning options, including weekly meal plans, batch cooking, and customizable menus to accommodate busy schedules and varying dietary preferences.
+                  </p>
+                </div>
+              </div>
+            <div class="col-12 col-md-4">
+                <div class="wcu-card p-3 mb-3">
+                  <img
+                    src="https://kslnewsradio.com/wp-content/uploads/2020/02/GettyImages-1133771222-620x370.jpg"
+                    class="wcu-card-image"
+                  />
+                  <h1 class="wcu-card-title mt-3">Convenience and Time-Saving</h1>
+                  <p class="wcu-card-description">
+                    Save time with easy-to-follow recipes and streamlined meal planning tools, allowing users to spend less time in the kitchen and more time enjoying meals with family and friends.
+                  </p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="feedbackContainer pt-5 pb-5" id="feedbackSection">
+        <div class="container">
+            <div class="row">
+              <div class="col-12">
+        <h1 class="feedback-title">Feedback</h1>
+        <p class="feedback-description">Please provide your valuable feedback</p>
+        <form id="feedback-form">
+        <div class="feedbackBodyContainer">
+          <div class="form-group">
+            <label class="feedbackLabel" for="name">Name</label>
+            <input type="text" class="inputStyle" id="name" name="name" required placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label class="feedbackLabel" for="email">Email</label>
+            <input type="text" class="inputStyle" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label class="feedbackLabel" for="rating">Rating</label>
+            <input type="text"  class="inputStyle" id="rating" name="rating" required placeholder="Provide rating from 1 to 10">
+          </div>
+          <div class="form-group">
+            <label class="feedbackLabel" for="feedbackText">Any suggestions</label>
+            <textarea id="feedbackText" name="feedbackText" rows="4"  class="inputStyle" required placeholder="Enter your suggestions"></textarea>
+          </div>
+          <div style="text-align: center;"><button class="feedbackButton">Submit</button></div>
+          </div>
+        </div>
+        </form>
+      </div>
+      </div>
+    </div>
+    <div class="follow-us-section pt-5 pb-5" id="followUsSection">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="follow-us-section-heading">Follow Us</h1>
+            </div>
+            <div class="col-12">
+              <div class="d-flex flex-row justify-content-center">
+                <div class="follow-us-icon-container">
+                  <i class="fab fa-twitter icon"></i>
+                </div>
+                <div class="follow-us-icon-container">
+                  <i class="fab fa-instagram icon"></i>
+                </div>
+                <div class="follow-us-icon-container">
+                  <i class="fab fa-facebook icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="footer-section pt-5 pb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <img
+                src="https://img.hotimg.com/logo-transparent-png.png"
+                class="food-munch-logo"
+              />
+              <h1 class="footer-section-mail-id">nutrinexus1830@gmail.com</h1>
+              <p class="footer-section-address">
+                Gandipet,Hyderabad
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nutinexus</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ac42c3b1f7.js" crossorigin="anonymous"></script>
+    <script>
+        let nameEl = document.getElementById("name");
+let nameErrMsgEl = document.getElementById("nameErrMsg");
+
+let mobileEl = document.getElementById("mobile");
+let mobileErrMsgEl = document.getElementById("mobileErrMsg");
+
+let bmiEl = document.getElementById("bmi");
+let bmiErrMsgEl = document.getElementById("bmiErrMsg");
+
+let genderMaleEl = document.getElementById("genderMale");
+let genderFemaleEl = document.getElementById("genderFemale");
+
+let diaYesEl = document.getElementById("diaYes");
+let diaNoEl = document.getElementById("diaNo");
+
+let bpYesEl = document.getElementById("bpYes");
+let bpNoEl = document.getElementById("bpNo");
+
+let myFormEl = document.getElementById("myForm");
+
+let formData = {
+    name: "",
+    mobile: "",
+    gender: "Male",
+    diabetic: "Yes",
+    bloodPressure: "Yes",
+};
+
+nameEl.addEventListener("change", function(event) {
+    if (event.target.value === "") {
+        nameErrMsgEl.textContent = "Required*";
+    } else {
+        nameErrMsgEl.textContent = "";
+    }
+
+    formData.name = event.target.value;
+});
+
+mobileEl.addEventListener("change", function(event) {
+    if (event.target.value === "") {
+        mobileErrMsgEl.textContent = "Required*";
+    } else {
+        mobileErrMsgEl.textContent = "";
+    }
+
+    formData.mobile = event.target.value;
+});
+
+genderMaleEl.addEventListener("change", function(event) {
+    formData.gender = event.target.value;
+});
+
+genderFemaleEl.addEventListener("change", function(event) {
+    formData.gender = event.target.value;
+});
+
+diaYesEl.addEventListener("change", function(event) {
+    formData.diabetic = event.target.value;
+});
+
+diaNoEl.addEventListener("change", function(event) {
+    formData.diabetic = event.target.value;
+});
+
+bpYesEl.addEventListener("change", function(event) {
+    formData.bloodPressure = event.target.value;
+});
+
+bpNoEl.addEventListener("change", function(event) {
+    formData.bloodPressure = event.target.value;
+});
+
+bmiEl.addEventListener("change", function(event) {
+    if (event.target.value === "") {
+        bmiErrMsgEl.textContent = "Required*";
+    } else {
+        bmiErrMsgEl.textContent = "";
+    }
+
+    formData.bmi = event.target.value;
+});
+
+function validateFormData(formData) {
+    let {
+        name,
+        mobile,
+        bmi
+    } = formData;
+    if (name === "") {
+        nameErrMsgEl.textContent = "Required*";
+    }
+    if (mobile === "") {
+        mobileErrMsgEl.textContent = "Required*";
+    }
+    if (bmi === "") {
+        bmiErrMsgEl.textContent = "Required*";
+    }
+
+}function submitFormData(formData) {
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer 00f3f8fde06120db02b587cc372c3d85510896e899b45774068bb750462acd9f",
+    },
+    body: JSON.stringify(formData)
+  };
+
+  let url = "https://gorest.co.in/public-api/users";
+
+  fetch(url, options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      console.log(jsonData);
+      if (jsonData.code === 422) {
+        if (jsonData.data[0].message === "has already been taken") {
+          emailErrMsgEl.textContent = "Email Already Exists";
+        }
+      }
+    });
+}
+
+myFormEl.addEventListener("submit", function(event){
+  event.preventDefault();
+  validateFormData(formData);
+  submitFormData(formData);
+});
+    </script>
+</head>
+
+<body>
+    <style>
+         .food-munch-logo {
+    width: 90px;
+    height: 80px;
+}
+
+#navItem1 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem2 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem3 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+.form-heading {
+    font-family: "Roboto";
+    font-size: 36px bold;
+    padding: 20px;
+}
+.signin {
+    background-image: url("https://img.freepik.com/premium-photo/food-background-with-place-text-with-different-kinds-pasta-tomatoes-herbs-mushrooms-eggs-seasonings-scattered-light-marble-background-top-view-italian-cuisine-concept_90258-3528.jpg?w=1800");
+    height: 130vh;
+    background-size: cover;
+}
+.length{
+    width:400px;
+}
+.labelStyle{
+    font-family:"Roboto";
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom:10px
+}
+
+.form-heading{
+    font-family:"SansSerif";
+    font-size:45px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+}
+.inputStyle{
+    width:250px;
+}
+.signinContainer{
+    background-color: rgb(255, 255, 255, 0.5);
+    width: 50vw;
+    margin:10px;
+    margin-top:100px;
+    margin-left:650px;
+    border-style:solid;
+    border-radius: 10px;
+    border-width:1px;
+    overflow-y: scroll;
+}
+.submitButton{
+    margin-left:300px;
+    color: white;
+    background-image: linear-gradient(#d0b200, #a58d00);
+    width: 130px;
+    height: 45px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+.bppara{
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 400;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom:10px
+}
+    </style>
+   <script type="text/javascript" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://img.hotimg.com/logo-transparent-png.png" class="food-munch-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                
+            </div>
+        </div>
+    </nav>
+    <div id="SectionSignin" class="signin d-flex justify-content-center flex-column">
+            <form id="myForm" action="/signin" method="post">
+                <div class="signinContainer mb-3">
+                    <h1 class="form-heading mb-3">Sign In</h1>
+                <div class="mb-3">
+                    <label for="name" class="labelStyle">Name</label>
+                    <input type="text" class="inputStyle" id="name" placeholder="Enter your name" required/>
+                    <p id="nameErrMsg" class="error-message"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="mobile" class="labelStyle">Mobile Number</label>
+                    <input type="text" class="inputStyle" id="mobile" placeholder="Enter your mobile number" required/>
+                    <p id="mobileErrMsg" class="error-message"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="pregnancies" class="labelStyle">Pregnancies</label>
+                    <input type="text" class="inputStyle" name="pregnancies" id="No.of pregnancies" placeholder="No.of pregnancies" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="glucose" class="labelStyle">Glucose Level</label>
+                    <input type="text" class="inputStyle" name="glucose" id="Glucose" placeholder="Glucose level" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="bp" class="labelStyle">Blood pressure</label>
+                    <input type="text" class="inputStyle" name="bp" id="bp" placeholder="Enter your diastolic blood pressure(mmHg)" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="skin" class="labelStyle">Skin Thickness</label>
+                    <input type="text" class="inputStyle" name="skin" id="skin" placeholder="Enter your skin thickness(mm)" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="insulin" class="labelStyle">Insulin Level</label>
+                    <input type="text" class="inputStyle" name="insulin" id="insulin" placeholder="Enter insulin level(muU/ml)" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="bmi" class="labelStyle">BMI</label>
+                    <input type="text" class="inputStyle" name="bmi" id="bmi" placeholder="Enter your BMI" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="dpf" class="labelStyle">Diabates PF</label>
+                    <input type="text" class="inputStyle" name="dpf" id="dpf" placeholder="Enter the DPF" required/>
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="labelStyle">Age</label>
+                    <input type="text" class="inputStyle" name="age" id="age" placeholder="Enter your age" required/>
+                </div>
+                <button class=" btn submitButton">Submit</button>
+            </form>
+        </div>
+    </body>
+    </html>

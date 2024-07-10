@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ac42c3b1f7.js" crossorigin="anonymous"></script>
+    <script>
+        let nameEl = document.getElementById("name");
+        let nameErrMsgEl = document.getElementById("nameErrMsg");
+        let mobileEl = document.getElementById("mobile");
+        let mobileErrMsgEl = document.getElementById("mobileErrMsg");
+        let myFormEl = document.getElementById("myForm");
+        nameEl.addEventListener("change", function(event) {
+    if (event.target.value === "") {
+        nameErrMsgEl.textContent = "Required*";
+    } else {
+        nameErrMsgEl.textContent = "";
+    }
+
+    formData.name = event.target.value;
+});
+mobileEl.addEventListener("change", function(event) {
+    if (event.target.value === "") {
+        mobileErrMsgEl.textContent = "Required*";
+    } else {
+        mobileErrMsgEl.textContent = "";
+    }
+
+    formData.mobile = event.target.value;
+});function validateFormData(formData) {
+    let {
+        name,
+        mobile
+    } = formData;
+    if (name === "") {
+        nameErrMsgEl.textContent = "Required*";
+    }
+    if (mobile === "") {
+        mobileErrMsgEl.textContent = "Required*";
+    }
+};
+function submitFormData(formData) {
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer 00f3f8fde06120db02b587cc372c3d85510896e899b45774068bb750462acd9f",
+    },
+    body: JSON.stringify(formData)
+  };
+
+  let url = "https://gorest.co.in/public-api/users";
+
+  fetch(url, options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      console.log(jsonData);
+      if (jsonData.code === 422) {
+        if (jsonData.data[0].message === "has already been taken") {
+          emailErrMsgEl.textContent = "Email Already Exists";
+        }
+      }
+    });
+}
+myFormEl.addEventListener("submit", function(event) {
+    event.preventDefault();
+    validateFormData(formData);
+    submitFormData(formData);
+});
+    </script>
+</head>
+
+<body>
+    <style>
+         .food-munch-logo {
+    width: 90px;
+    height: 80px;
+}
+
+#navItem1 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem2 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+#navItem3 {
+    color: #323f4b;
+    font-family: "Roboto";
+}
+
+
+.form-heading {
+    font-family: "Roboto";
+    font-size: 36px bold;
+    padding: 20px;
+}
+.login {
+    background-image: url("https://img.freepik.com/free-photo/fresh-colourful-ingredients-mexican-cuisine_23-2148254294.jpg?w=1800&t=st=1714385780~exp=1714386380~hmac=abea58e706b1bc75bc3642c52f38fca78ece0bdfae52f5e8807b6a8707a96c80");
+    height: 100vh;
+    background-size: cover;
+}
+.length{
+    width:400px;
+}
+.labelStyle{
+    font-family:"Roboto";
+    font-size: 36px;
+    font-weight: 400;
+    margin: 50px;
+}
+
+.form-heading{
+    font-family:"SansSerif";
+    font-size:45px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+}
+.inputStyle{
+    width:300px;
+}
+.loginContainer{
+    background-color:  rgb(255, 255, 255, 0.5);
+    width: 50vw;
+    margin:50px;
+    margin-left:250px;
+    border-style:solid;
+    border-radius: 10px;
+    border-width:1px;
+}
+.submitButton{
+    margin-left:300px;
+    color: white;
+    background-image: linear-gradient(#d0b200, #a58d00);
+    width: 130px;
+    height: 45px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+    </style>
+   <script type="text/javascript" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://img.hotimg.com/logo-transparent-png.png" class="food-munch-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link active" id="navItem1" href="chooseUs.html">
+                        Why Choose Us?
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <a class="nav-link" href="#feedbackSection" id="navItem2">Feedback</a>
+                    <a class="nav-link" href="#followUsSection" id="navItem3">Follow Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="login d-flex justify-content-center flex-column" id="SectionLogin">        
+    <form id="myForm">
+                <div class="loginContainer">
+                <h1 class="form-heading mb-3">Login</h1>
+                <div class="mb-3">
+                    <label for="name" class="labelStyle">Name</label>
+                    <input type="text" class="inputStyle" id="name" placeholder="Enter your name"/>
+                    <p id="nameErrMsg" class="error-message"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="mobile" class="labelStyle">Mobile Number</label>
+                    <input type="text" class="inputStyle" id="mobile" placeholder="Enter your mobile number"/>
+                    <p id="mobileErrMsg" class="error-message"></p>
+                </div>
+                <a href="result.html" class="btn submitButton">Submit</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
